@@ -19,10 +19,27 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       dayGridMonth: {
         // name of view
-        titleFormat: { year: 'numeric', month: 'long' }  ,
+        titleFormat: { year: "numeric", month: "long" },
         // other view-specific options here
       },
     },
+    events: [
+      {
+        // this object will be "parsed" into an Event Object
+        title: "First Event", // a property!
+        start: "2023-02-21T12:30:00", // a property!
+        end: "2023-02-21T14:30:00", // a property! ** see important note below about 'end' **
+        id: "5",
+        color:'red',
+        dataTitle:"lorem"
+        
+      },
+    ],
+    eventClick: function(info) {
+        console.log(info);
+        console.log('Event: ' + info.event.extendedProps.dataTitle);
+        console.log('Event: ' + info.event.id);
+    }
   });
   calendar.render();
 });
