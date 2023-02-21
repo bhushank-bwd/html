@@ -35,6 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
         
       },
     ],
+    editable:true,
+    eventDrop: function(info){
+      var today=moment().format("YYYY-MM-DD");
+      var start = info.event._instance.range.start;
+      console.log(start);
+      if (Date.parse(start) < Date.parse(today)){
+        console.log("old date");
+        info.revert();
+        return false;
+      }
+    },
     eventClick: function(info) {
         console.log(info);
         console.log('Event: ' + info.event.extendedProps.dataTitle);
