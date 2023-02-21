@@ -30,27 +30,33 @@ document.addEventListener("DOMContentLoaded", function () {
         start: "2023-02-21T12:30:00", // a property!
         end: "2023-02-21T14:30:00", // a property! ** see important note below about 'end' **
         id: "5",
-        color:'red',
-        dataTitle:"lorem"
-        
+        color: "red",
+        dataTitle: "lorem",
       },
     ],
-    editable:true,
-    eventDrop: function(info){
-      var today=moment().format("YYYY-MM-DD");
+    dateClick: function (info) {
+      var today = moment().format("YYYY-MM-DD");
+      console.log(info.date);
+      if (Date.parse(today) > Date.parse(info.date)) {
+        console.log("Old date selected");
+      }
+    },
+    editable: true,
+    eventDrop: function (info) {
+      var today = moment().format("YYYY-MM-DD");
       var start = info.event._instance.range.start;
       console.log(start);
-      if (Date.parse(start) < Date.parse(today)){
+      if (Date.parse(start) < Date.parse(today)) {
         console.log("old date");
         info.revert();
         return false;
       }
     },
-    eventClick: function(info) {
-        console.log(info);
-        console.log('Event: ' + info.event.extendedProps.dataTitle);
-        console.log('Event: ' + info.event.id);
-    }
+    eventClick: function (info) {
+      console.log(info);
+      console.log("Event: " + info.event.extendedProps.dataTitle);
+      console.log("Event: " + info.event.id);
+    },
   });
   calendar.render();
 });
