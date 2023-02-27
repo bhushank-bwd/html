@@ -16,37 +16,118 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" type="text/css" href="css/toastr.css">
-
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/dataTables.bootstrap5.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/toastr.css" />
   </head>
 
   <body>
     <div class="container p-5">
-        <table id="example" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>SRNO</th>
-                    <th>Name</th>
-                    <th>Phone no.</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-               
-                
-            </tbody>
-            <tfoot>
-                
-            </tfoot>
-        </table>
+      <table id="example" class="table table-striped" style="width: 100%">
+        <thead>
+          <tr>
+            <th>SRNO</th>
+            <th>Name</th>
+            <th>Phone no.</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
     </div>
+
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div
+      class="modal fade"
+      id="userModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalTitleId"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="user_action" method="POST">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  id="name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Name</label>
+                <textarea
+                  class="form-control"
+                  id="address"
+                  id="address"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="mob" class="form-label">Mobile</label>
+                <input
+                  type="tel"
+                  name="mob"
+                  class="form-control"
+                  id="mob"
+                  placeholder="888 888 8888"
+                  pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+                  maxlength="12"
+                  title="Ten digits code"
+                  required
+                />
+              </div>
+              <input type="hidden" id="user_id" value="0" name="user_id" />
+              <button type="submit" id="submit_user" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dataTables.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
     <script src="js/sweetalert.min.js"></script>
     <script src="js/toastr.min.js"></script>
     <script src="js/index.js"></script>
